@@ -1,0 +1,158 @@
+/*
+Author: Kueh Jing Quan
+Date: May-June 2020
+----------------------------------
+*/
+
+/*--------------------------  NAV BAR  -------------------------- */
+@media screen and (max-width: 600px) {
+    
+    .main-body{
+        padding:0px 5px;
+    }
+
+    .nav-bar{
+        padding:0px;
+    }
+
+    .tab{
+        margin: 0px;
+        padding: 10px;
+        font-size: 1.4rem;
+    }
+    
+    .tab.home{
+        font-size: 1.1rem;
+    }
+
+    .nav-bar-label{
+        display: none;
+    }
+
+    .active[data-tab-content]{
+        display: block;
+        padding:0px 5px;
+    }
+
+    /*--------------------------  CALCULATOR  -------------------------- */
+    .calculator-content{
+        padding:0px;
+    }
+    
+    .calculator{
+        width: 100%;
+    }
+    
+    .cgpaInput-box{
+        display: block;
+    }
+    
+    .cgpaInput-box .cgpaInput{
+        width: calc(100% - 20px);
+        margin: 5px 0px;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+    
+    .cgpaInput input[type="number"]{
+        width:50%;
+        padding:2px 5px;
+        font-size: 0.8rem;
+    }
+    
+    .calculator-table th{
+        margin: 0px;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+    
+    .calculator-table td{
+        margin: 5px;
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+    
+    input[type="text"]{
+        width: 90%;
+        font-size: 0.8rem;
+    }
+    
+    
+    select{
+        width:100%;
+        font-size: 0.8rem;
+    }
+    
+    .addSubject-btn{
+        width: 100%;
+        margin: 5px 0px;
+        padding: 10px;
+        font-size: 1rem;
+    }
+    
+    .gpa-target{
+        display: block;
+    }
+    
+    .gpaTargetInput-box{
+        width:100%;
+        margin-right: 30px;
+    }
+    
+    .gpaTargetInput-box .gpaTargetInput {
+        width: calc(100% - 20px);
+        margin: 5px 0px;
+        padding: 10px;
+        text-align: left;
+        font-size: 0.8rem;
+
+    }
+    
+    .gpaTargetInput input[type="number"]{
+        padding:2px 5px;
+        font-size: 0.8rem;
+    }
+    
+    
+    .gpaTargetLabel{
+        width:calc(100% - 20px);
+        margin: 5px 0px;
+        padding: 10px;
+        font-size: 0.8rem;
+
+    }
+    
+    .gpaTargetValue{
+        font-size: 2.4rem;
+        font-family: 'Manrope', sans-serif;
+    }
+    
+    
+    /* RESULT DISPLAY */
+    .result{
+        width:100%;
+        margin:5px 0px;
+    }
+    
+    .gpa-row, .cgpa-row{
+        display: flex;
+    }
+
+
+
+
+    .display-label{
+        width: 50%;
+        padding: 10px;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+    
+    .display-value{
+        font-size: 2.6rem;
+        font-family: 'Manrope', sans-serif;
+        color:grey;
+    }
+
+    
+}
