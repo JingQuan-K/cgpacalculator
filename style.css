@@ -6,13 +6,14 @@ Date: May-June 2020
 
 /* MAIN BODY */
 body{
-    background-color: whitesmoke;
+    margin:0;
     font-family: 'Raleway', sans-serif;
+    background-color: whitesmoke;   
 }
 
 /*--------------------------  NAV BAR  -------------------------- */
 .nav-bar{
-    padding:0px 15px;
+    padding:0px 25px;
     color: white;
     background-color: #031930;
 }
@@ -29,8 +30,8 @@ body{
 .tab{
     height: 100%;
     margin: 0px 20px 0px 0px;
-    padding:20px 20px;
-    font-size: 1.3rem;
+    padding:25px 20px;
+    font-size: 1.4rem;
     color: #d5d5d5;
     border-bottom:4px solid #031930;
 }
@@ -244,7 +245,7 @@ td.removeSubject-btn:hover{
 /* RESULT DISPLAY */
 .result{
     align-items: center;
-    width:16vw;
+    min-width:16vw;
     margin:5px;
     background-color: #f0f0f0;
     border: 2px solid grey;
@@ -402,4 +403,3 @@ input[type="number"]:hover{
 .tab, td.removeSubject-btn, .addSubject-btn, .preSetTabs, .saveSettings-btn{
     cursor: pointer;
 }
-
