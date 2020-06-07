@@ -1,0 +1,2 @@
+# cgpacalculator
+Vanilla Javascript Project
