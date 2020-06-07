@@ -1,3 +1,3 @@
 # cgpacalculator
-Vanilla Javascript Project
+Vanilla Javascript Project<br>
 C/GPA CALCULATOR with Grade Scale Settings and other features.
