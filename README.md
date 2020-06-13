@@ -1,5 +1,8 @@
 # cgpacalculator
-Vanilla Javascript Project<br>
-C/GPA CALCULATOR with Grade Scale Settings and other features.<br>
-STILL A Work In Progress.<br>
-Mobile CSS and Other Bug Fixes to come.
+Vanilla Javascript Project: GPA/CGPA CALCULATOR<br>
+FEATURES:
+- Live Calculation<br>
+- Grade Scale/Point Settings<br>
+- GPA Target Calculator<br>
+- Responive CSS<br>
+
