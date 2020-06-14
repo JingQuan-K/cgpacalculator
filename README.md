@@ -5,4 +5,3 @@ FEATURES:
 - Grade Scale/Point Settings<br>
 - GPA Target Calculator<br>
 - Responive CSS<br>
-
