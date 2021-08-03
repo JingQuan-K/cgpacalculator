@@ -9,6 +9,19 @@ const defaultSubjectsNo = 6;
 const maxCreditNo = 7;
 const decimalPointNo = 4;
 
+//Gradepoints
+let settingsArr = {
+    "default": { 'A': 4.00, 'A-': 3.70, 'B+': 3.30, 'B': 3.00, 'B-': 2.70, 'C+': 2.30, 'C': 2.00, 'C-': 1.70, 'D+': 1.30, 'D': 1.00, 'D-': 0.70, 'F': 0.00 },
+    "taruc": { 'A': 4.00, 'A-': 3.75, 'B+': 3.50, 'B': 3.00, 'B-': 2.75, 'C+': 2.50, 'C': 2.00, 'F': 0.00 },
+    "utar": { 'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67, 'C+': 2.33, 'C': 2.00, 'F': 0.00 },
+    "help": { 'A': 4.00, 'A-': 3.75, 'B+': 3.50, 'B': 3.25, 'B-': 3.00, 'C+': 2.75, 'C': 2.50, 'C-': 2.25, 'D': 2.00, 'F': 0.00 },
+    "custom": { 'A': 4.00, 'A-': 3.70, 'B+': 3.30, 'B': 3.00, 'B-': 2.70, 'C+': 2.30, 'C': 2.00, 'C-': 1.70, 'D+': 1.30, 'D': 1.00, 'D-': 0.70, 'F': 0.00 }
+}
+
+//initialSavedSettings
+let id = localStorage.getItem('settings') ?? 'default'
+let custom = JSON.parse(localStorage.getItem('customizedSettings')) ?? settingsArr['custom']
+
 //SELECTORS
 const calculatorTable = document.querySelector(".calculator-table");
 const calculatorTableBody = calculatorTable.getElementsByTagName('tbody')[0];
@@ -23,17 +36,17 @@ const settingsTableBody = document.querySelector(".settings-table-body");
 
 //FUNCTIONS
 //Calculator-Functions
-function loadDefaultSubjects(){ 
+function loadDefaultSubjects() {
     calculatorTableBody.innerHTML = '';
-    let grades = getGrades();
 
-    for(let i = 0; i < defaultSubjectsNo; i++){
+    for (let i = 0; i < defaultSubjectsNo; i++) {
         addSubject();
     }
 }
 
 function addSubject() {
-    let grades = getGrades();
+    let id = localStorage.getItem('settings') ?? 'default'
+    let grades = settingsArr[id];
     let row = calculatorTableBody.insertRow(-1);
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
@@ -42,24 +55,24 @@ function addSubject() {
 
     //Subject Input
     let subjectInput = document.createElement("input");
-    subjectInput.setAttribute("type","text");
+    subjectInput.setAttribute("type", "text");
     subjectInput.setAttribute("placeholder", "Eg. Calculus");
     cell1.appendChild(subjectInput);
 
     //Credit Select
     let creditSelect = document.createElement("select");
-    creditSelect.setAttribute("class","credit");
-    creditSelect.setAttribute("onchange","calculator()")
-    for(let i = 0; i <= maxCreditNo; i++){
+    creditSelect.setAttribute("class", "credit");
+    creditSelect.setAttribute("onchange", "calculator()")
+    for (let i = 0; i <= maxCreditNo; i++) {
         let creditOption = document.createElement("option");
-        if(i === 0){
+        if (i === 0) {
             creditOption.append("--");
             creditOption.setAttribute("disabled", true);
-            creditOption.setAttribute("selected" ,true);
-            creditOption.setAttribute("value","--");
-        }else{
+            creditOption.setAttribute("selected", true);
+            creditOption.setAttribute("value", "--");
+        } else {
             creditOption.append(i);
-            creditOption.setAttribute("value",i);
+            creditOption.setAttribute("value", i);
         }
         creditSelect.appendChild(creditOption);
     }
@@ -67,33 +80,33 @@ function addSubject() {
 
     //Grade Select
     let gradeSelect = document.createElement("select");
-    gradeSelect.setAttribute("class","grade");
-    gradeSelect.setAttribute("onchange","calculator()")
+    gradeSelect.setAttribute("class", "grade");
+    gradeSelect.setAttribute("onchange", "calculator()")
     let gradeOption = document.createElement("option");
     gradeOption.append("--");
     gradeOption.setAttribute("disabled", true);
-    gradeOption.setAttribute("selected" ,true);
-    gradeOption.setAttribute("value","--");
+    gradeOption.setAttribute("selected", true);
+    gradeOption.setAttribute("value", "--");
     gradeSelect.appendChild(gradeOption);
 
-    for(let i in grades){
+    for (let i in grades) {
         let gradeOption = document.createElement("option");
         gradeOption.append(i);
-        gradeOption.setAttribute("value",grades[i]);
+        gradeOption.setAttribute("value", grades[i]);
         gradeSelect.appendChild(gradeOption);
     }
     cell3.appendChild(gradeSelect);
 
     //Remove Button
-    cell4.innerHTML="<i class='far fa-trash-alt'></i>";
-    cell4.setAttribute("onclick","removeSubject(this), calculator()");
+    cell4.innerHTML = "<i class='far fa-trash-alt'></i>";
+    cell4.setAttribute("onclick", "removeSubject(this), calculator()");
     cell4.classList.add("removeSubject-btn");
 
     toggleRemoveButton();
 }
 
-function calculator(){
-    let result = {semesterCredits:0, totalGradePoints:0, gpa:0, totalCredits:0, cgpa:0};
+function calculator() {
+    let result = { semesterCredits: 0, totalGradePoints: 0, gpa: 0, totalCredits: 0, cgpa: 0 };
 
     calculateGPA(result);
 
@@ -103,12 +116,12 @@ function calculator(){
 
 }
 
-function calculateGPA(result){
-    for (let i = 1; i < calculatorTable.rows.length; i++ ){
+function calculateGPA(result) {
+    for (let i = 1; i < calculatorTable.rows.length; i++) {
         let creditInput = calculatorTable.rows[i].cells[1].querySelector(".credit").value;
         let gradeInput = calculatorTable.rows[i].cells[2].querySelector(".grade").value;
 
-        if( creditInput !== "--" &&  gradeInput !== "--"){
+        if (creditInput !== "--" && gradeInput !== "--") {
             let credit = parseFloat(creditInput);
             let gradeValue = parseFloat(gradeInput);
             let gradePoints = gradeValue * credit;
@@ -118,17 +131,17 @@ function calculateGPA(result){
     }
 
     result["gpa"] = result["totalGradePoints"] / result["semesterCredits"];
-    
-    if(isNaN(result["gpa"]))
+
+    if (isNaN(result["gpa"]))
         result["gpa"] = 0;
 }
 
-function calculateCGPA(result){
+function calculateCGPA(result) {
     let currentCGPA = parseFloat(currentCGPAInput.value);
     let creditsCompleted = parseFloat(creditsCompletedInput.value);
 
-    if(currentCGPAInput.value !== "" && creditsCompletedInput.value !== ""){
-        let currentGradePoints =  currentCGPA * creditsCompleted;
+    if (currentCGPAInput.value !== "" && creditsCompletedInput.value !== "") {
+        let currentGradePoints = currentCGPA * creditsCompleted;
         result["totalCredits"] = result["semesterCredits"] + creditsCompleted;
         result["totalGradePoints"] += currentGradePoints;
         result["cgpa"] = result["totalGradePoints"] / result["totalCredits"];
@@ -136,18 +149,18 @@ function calculateCGPA(result){
     }
 }
 
-function calculateGPAtarget(){
+function calculateGPAtarget() {
     let cgpaTarget = parseFloat(cgpaTargetInput.value);
     let totalCredits = parseFloat(creditsCompletedInput.value) + parseFloat(creditsTakingInput.value);
     let currentGradePoints = parseFloat(creditsCompletedInput.value) * parseFloat(currentCGPAInput.value);
 
-    if(currentCGPAInput.value !== "" && creditsCompletedInput.value !== "" && creditsTakingInput.value !== "" && cgpaTargetInput.value !== ""){
-        let gpaTarget = (cgpaTarget * totalCredits - currentGradePoints) /  parseFloat(creditsTakingInput.value);
+    if (currentCGPAInput.value !== "" && creditsCompletedInput.value !== "" && creditsTakingInput.value !== "" && cgpaTargetInput.value !== "") {
+        let gpaTarget = (cgpaTarget * totalCredits - currentGradePoints) / parseFloat(creditsTakingInput.value);
         document.querySelector(".gpaTargetValue").innerHTML = gpaTarget.toFixed(getDecimalPoint(gpaTarget));
     }
 }
 
-function displayResults(result){
+function displayResults(result) {
     document.querySelector('#semesterCreditDisplay').innerHTML = result["semesterCredits"];
     document.querySelector('#gpaDisplay').innerHTML = result["gpa"].toFixed(getDecimalPoint(result["gpa"]));
     document.querySelector('#totalCreditDisplay').innerHTML = result["totalCredits"];
@@ -157,26 +170,26 @@ function displayResults(result){
     document.querySelector('#cgpaDisplay').style.color = getColour(result["cgpa"]);
 }
 
-function getColour(value){
+function getColour(value) {
     let color = "";
-    if(value <= 0)
+    if (value <= 0)
         color = "grey";
-    else if(value <= 2)
+    else if (value <= 2)
         color = "red";
-    else if(value <= 3)
+    else if (value <= 3)
         color = "orange";
-    else if(value <= 3.5)
-        color ="#15a708";
-    else if(value <= 4)
-        color ="#00fb1d";
+    else if (value <= 3.5)
+        color = "#15a708";
+    else if (value <= 4)
+        color = "#00fb1d";
 
     return color;
 }
 
 //does not display decimal points if value is 0
-function getDecimalPoint(value){
+function getDecimalPoint(value) {
     let decimalPoint = decimalPointNo;
-    if(value === 0)
+    if (value === 0)
         decimalPoint = 0;
 
     return decimalPoint;
@@ -186,75 +199,101 @@ function removeSubject(tableRow) {
     let index = tableRow.parentNode.rowIndex;
     calculatorTable.deleteRow(index);
     toggleRemoveButton();
-}   
+}
 
 //hides remove button if there is only one subject
-function toggleRemoveButton(){
-    if(calculatorTable.rows.length === 2){
-        document.querySelector(".removeSubject-btn").style.display="none";  
-    }else{
-        document.querySelector(".removeSubject-btn").style.display="table-cell";
+function toggleRemoveButton() {
+    if (calculatorTable.rows.length === 2) {
+        document.querySelector(".removeSubject-btn").style.display = "none";
+    } else {
+        document.querySelector(".removeSubject-btn").style.display = "table-cell";
     }
 }
 
-//Settings-Functions
-function getGrades(){
-    let grades = {};
-    for(let i = 0; i < settingsTableBody.rows.length; i++){
-        let checkBox = settingsTableBody.rows[i].cells[0].children[0];
-        if(checkBox.checked){
-            let grade = settingsTableBody.rows[i].cells[1].innerHTML;
-            let point = settingsTableBody.rows[i].cells[2].children[0].value;
-            grades[grade] = parseFloat(point);
+function inflateSettingsTable(id) {
+
+    let editable = true
+    if (id === 'custom')
+        editable = false
+
+    for (let i = 0; i < settingsTableBody.rows.length; i++) {
+        for (grade in settingsArr[id]) {
+            if (grade === settingsTableBody.rows[i].cells[1].innerHTML) {
+                settingsTableBody.rows[i].cells[0].children[0].checked = true;
+                settingsTableBody.rows[i].cells[2].children[0].value = parseFloat(settingsArr[id][grade]).toFixed(2);
+                break;
+            }
+            else {
+                settingsTableBody.rows[i].cells[0].children[0].checked = false;
+                settingsTableBody.rows[i].cells[2].children[0].value = "";
+            }
         }
-    }
-    return grades;
-}
-
-function setPreSetSettings(id){
-    let checkedRows = getPreSetChoice(id).slice(0,12);
-    let gradeValueByRow = getPreSetChoice(id).slice(12,24);
-    
-    for(let i = 0; i < settingsTableBody.rows.length; i++){
-        settingsTableBody.rows[i].cells[0].children[0].checked = checkedRows[i];
-        settingsTableBody.rows[i].cells[2].children[0].value = gradeValueByRow[i].toFixed(2);
+        settingsTableBody.rows[i].cells[0].children[0].disabled = editable;
+        settingsTableBody.rows[i].cells[2].children[0].disabled = editable;
     }
 
+}
+
+function save() {
+
+    //save id to local storage
+    let id;
+    preSetTabs.forEach(tab => {
+        if (tab.classList.contains('active'))
+            id = tab.id;
+    })
+    localStorage.setItem('settings', id);
+
+    //save customizedSettings to local storage
+    if (id === 'custom') {
+        settingsArr['custom'] = {}
+        for (let i = 0; i < settingsTableBody.rows.length; i++) {
+            if (settingsTableBody.rows[i].cells[0].children[0].checked) {
+                settingsArr["custom"][settingsTableBody.rows[i].cells[1].innerHTML] = settingsTableBody.rows[i].cells[2].children[0].value
+            }
+        }
+        localStorage.setItem('customizedSettings', JSON.stringify(settingsArr['custom']))
+    }
 
 }
 
-function getPreSetChoice(id){
-    let defaultSettings = [true, true, true, true, true, true, true, true, true, true, true, true, 4.00, 3.70, 3.30, 3.00, 2.70, 2.30, 2.00, 1.70, 1.30, 1.00, 0.70, 0.00];
-    let taruc = [true, true, true, true, true, true, true, false, false, false, false, true, 4.00, 3.75, 3.50, 3.00, 2.75, 2.50, 2.00, 1.75, 1.50, 1.00, 0.75, 0.00];
-    let utar = [true, true, true, true, true, true, true, false, false, false, false, true, 4.00, 3.67, 3.33, 3.00, 2.67, 2.33, 2.00, 1.67, 1.33, 1.00, 0.67, 0.00];
-    let help = [true, true, true, true, true, true, true, true, false, true, false, true, 4.00, 3.75, 3.50, 3.25, 3.00, 2.75, 2.50, 2.25, 2.10, 2.00, 1.75, 0.00];
+//For page load only
+function loadSettings() {
+    preSetTabs.forEach(tab => {
+        if (tab.id === id)
+            tab.classList.add('active')
+        else
+            tab.classList.remove('active')
+    })
+    settingsArr['custom'] = custom;
+    inflateSettingsTable(id);
 
-    if(id === "defaultSettings") return defaultSettings;
-    else if(id === "tarucSettings") return taruc;
-    else if(id === "utarSettings") return utar;
-    else if(id === "helpSettings") return help;
 }
-
 
 //ACTIONS
-window.onload = loadDefaultSubjects;
+window.onload = () => {
+    loadSettings();
+    loadDefaultSubjects();
+}
 addSubjectButton.onclick = addSubject;
-saveSettings.onclick = loadDefaultSubjects;
+saveSettings.onclick = () => {
+    save();
+    loadDefaultSubjects();
+}
+currentCGPAInput.addEventListener('keyup', calculator);
+currentCGPAInput.addEventListener('keyup', calculateGPAtarget);
+currentCGPAInput.addEventListener('change', calculator);
+currentCGPAInput.addEventListener('change', calculateGPAtarget);
 
-currentCGPAInput.addEventListener('keyup',calculator);
-currentCGPAInput.addEventListener('keyup',calculateGPAtarget);
-currentCGPAInput.addEventListener('change',calculator);
-currentCGPAInput.addEventListener('change',calculateGPAtarget);
+creditsCompletedInput.addEventListener('keyup', calculator);
+creditsCompletedInput.addEventListener('keyup', calculateGPAtarget);
+creditsCompletedInput.addEventListener('change', calculator);
+creditsCompletedInput.addEventListener('change', calculateGPAtarget);
 
-creditsCompletedInput.addEventListener('keyup',calculator);
-creditsCompletedInput.addEventListener('keyup',calculateGPAtarget);
-creditsCompletedInput.addEventListener('change',calculator);
-creditsCompletedInput.addEventListener('change',calculateGPAtarget);
-
-creditsTakingInput.addEventListener('keyup',calculateGPAtarget);
-creditsTakingInput.addEventListener('change',calculateGPAtarget);
-cgpaTargetInput.addEventListener('keyup',calculateGPAtarget);
-creditsTakingInput.addEventListener('change',calculateGPAtarget);
+creditsTakingInput.addEventListener('keyup', calculateGPAtarget);
+creditsTakingInput.addEventListener('change', calculateGPAtarget);
+cgpaTargetInput.addEventListener('keyup', calculateGPAtarget);
+creditsTakingInput.addEventListener('change', calculateGPAtarget);
 
 //TABS
 const navBarTabs = document.querySelectorAll('[data-tab-target]');
@@ -263,24 +302,24 @@ const preSetTabs = document.querySelectorAll('.preSetTab');
 
 navBarTabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      const target = document.querySelector(tab.dataset.tabTarget)
-      tabContents.forEach(tabContent => {
-        tabContent.classList.remove('active')
-      })
-      navBarTabs.forEach(tab => {
-        tab.classList.remove('active')
-      })
-      tab.classList.add('active')
-      target.classList.add('active')
+        const target = document.querySelector(tab.dataset.tabTarget)
+        tabContents.forEach(tabContent => {
+            tabContent.classList.remove('active')
+        })
+        navBarTabs.forEach(tab => {
+            tab.classList.remove('active')
+        })
+        tab.classList.add('active')
+        target.classList.add('active')
     })
-  })
+})
 
-  preSetTabs.forEach(tab =>{
-      tab.addEventListener('click',() =>{
-          preSetTabs.forEach(tab =>{
-              tab.classList.remove('active')
-          })
-          tab.classList.add('active')
-          setPreSetSettings(tab.id);
-      })
-  })
+preSetTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        preSetTabs.forEach(tab => {
+            tab.classList.remove('active')
+        })
+        tab.classList.add('active')
+        inflateSettingsTable(tab.id);
+    })
+})
