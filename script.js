@@ -11,11 +11,19 @@ const decimalPointNo = 4;
 
 //Gradepoints
 let settingsArr = {
-    "default": { 'A': 4.00, 'A-': 3.70, 'B+': 3.30, 'B': 3.00, 'B-': 2.70, 'C+': 2.30, 'C': 2.00, 'C-': 1.70, 'D+': 1.30, 'D': 1.00, 'D-': 0.70, 'F': 0.00 },
+    "default": { 'A+': 4.30, 'A': 4.00, 'A-': 3.70, 'B+': 3.30, 'B': 3.00, 'B-': 2.70, 'C+': 2.30, 'C': 2.00, 'C-': 1.70, 'D+': 1.30, 'D': 1.00, 'D-': 0.70, 'F': 0.00 },
     "taruc": { 'A': 4.00, 'A-': 3.75, 'B+': 3.50, 'B': 3.00, 'B-': 2.75, 'C+': 2.50, 'C': 2.00, 'F': 0.00 },
     "utar": { 'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67, 'C+': 2.33, 'C': 2.00, 'F': 0.00 },
     "help": { 'A': 4.00, 'A-': 3.75, 'B+': 3.50, 'B': 3.25, 'B-': 3.00, 'C+': 2.75, 'C': 2.50, 'C-': 2.25, 'D': 2.00, 'F': 0.00 },
-    "custom": { 'A': 4.00, 'A-': 3.70, 'B+': 3.30, 'B': 3.00, 'B-': 2.70, 'C+': 2.30, 'C': 2.00, 'C-': 1.70, 'D+': 1.30, 'D': 1.00, 'D-': 0.70, 'F': 0.00 }
+    "inti": { 'A+': 4.00, 'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67, 'C+': 2.33, 'C': 2.00, 'C-': 1.50, 'D': 1.00, 'F': 0.00 },
+    "usm": { 'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67, 'C+': 2.33, 'C': 2.00, 'C-': 1.67, 'D+': 1.33, 'D': 1.00, 'D-': 0.67, 'F': 0.00 },
+    "ucsi": { 'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67, 'C+': 2.33, 'C': 2.00, 'C-': 1.67, 'D+': 1.33, 'D': 1.00, 'D-': 0.67, 'F': 0.00 },
+    "sunway": { 'A': 4.00, 'B+': 3.50, 'B': 3.00, 'C+': 2.50, 'C': 2.00, 'D+': 1.50, 'D': 1.00, 'F': 0.00 },
+    "taylors": { 'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67, 'C+': 2.33, 'C': 2.00, 'D+': 1.67, 'D': 1.33, 'D-': 1.00, 'F': 0.00 },
+    "utm": { 'A+': 4.00, 'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67, 'C+': 2.33, 'C': 2.00, 'C-': 1.67, 'D+': 1.33, 'D': 1.00, 'D-': 0.67, 'F': 0.00 },
+    "upm": { 'A': 4.00, 'A-': 3.75, 'B+': 3.50, 'B': 3.00, 'B-': 2.75, 'C+': 2.50, 'C': 2.00, 'C-': 1.75, 'D+': 1.50, 'D': 1.00, 'F': 0.00 },
+    "stpm": { 'A': 4.00, 'A-': 3.67, 'B+': 3.33, 'B': 3.00, 'B-': 2.67, 'C+': 2.33, 'C': 2.00, 'D+': 1.67, 'D': 1.33, 'D-': 1.00, 'F': 0.00 },
+    "custom": { 'A+': 4.30, 'A': 4.00, 'A-': 3.70, 'B+': 3.30, 'B': 3.00, 'B-': 2.70, 'C+': 2.30, 'C': 2.00, 'C-': 1.70, 'D+': 1.30, 'D': 1.00, 'D-': 0.70, 'F': 0.00 }
 }
 
 //initialSavedSettings
@@ -30,6 +38,7 @@ const currentCGPAInput = document.querySelector(".currentCGPA");
 const creditsCompletedInput = document.querySelector(".creditsCompleted");
 const cgpaTargetInput = document.querySelector(".cgpaTarget");
 const creditsTakingInput = document.querySelector(".creditsTaking");
+const settingsName = document.querySelector('#settingsName');
 const saveSettings = document.querySelector(".saveSettings-btn");
 const settingsTableBody = document.querySelector(".settings-table-body");
 
@@ -212,25 +221,27 @@ function toggleRemoveButton() {
 
 function inflateSettingsTable(id) {
 
+    settingsName.innerHTML = document.querySelector('#' + id).innerHTML;
+
     let editable = true
     if (id === 'custom')
         editable = false
 
     for (let i = 0; i < settingsTableBody.rows.length; i++) {
-        for (grade in settingsArr[id]) {
-            if (grade === settingsTableBody.rows[i].cells[1].innerHTML) {
-                settingsTableBody.rows[i].cells[0].children[0].checked = true;
-                settingsTableBody.rows[i].cells[2].children[0].value = parseFloat(settingsArr[id][grade]).toFixed(2);
-                break;
-            }
-            else {
-                settingsTableBody.rows[i].cells[0].children[0].checked = false;
-                settingsTableBody.rows[i].cells[2].children[0].value = "";
-            }
+
+        if (settingsArr[id][settingsTableBody.rows[i].cells[1].innerHTML] != undefined) {
+            settingsTableBody.rows[i].cells[0].children[0].checked = true;
+            settingsTableBody.rows[i].cells[2].children[0].value = parseFloat(settingsArr[id][settingsTableBody.rows[i].cells[1].innerHTML]).toFixed(2);
         }
+        else {
+            settingsTableBody.rows[i].cells[0].children[0].checked = false;
+            settingsTableBody.rows[i].cells[2].children[0].value = "";
+        }
+
         settingsTableBody.rows[i].cells[0].children[0].disabled = editable;
         settingsTableBody.rows[i].cells[2].children[0].disabled = editable;
     }
+
 
 }
 
@@ -256,6 +267,7 @@ function save() {
     }
 
 }
+
 
 //For page load only
 function loadSettings() {
