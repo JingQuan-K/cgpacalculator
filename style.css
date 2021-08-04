@@ -66,7 +66,7 @@ body{
 .cgpaInput-box .cgpaInput{
     width: 100%;
     margin: 5px;
-    padding: 10px 30px;
+    padding: 15px 30px;
     text-align: left;
     font-size: 1.1rem;
     color: #eeeeee;
@@ -278,26 +278,36 @@ td.removeSubject-btn:hover{
 .preSetSettings{
     background-color: #f2f2f2;
     border: 2px solid #d7d7d7;
+    margin-right: 15px;
+    width: 270px;
 }
 
 .preSetTabsHead{
     margin-bottom: 2px;
     padding: 16px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     line-height: 1.5;
     background-color: #002850;
     color:#eeeeee;
 }
 
-.preSetTabsHeadDesc{
-    font-size: 0.7rem;
-    color:#909090;
+.preSetSettingsHead{
+    padding: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
 }
 
 .preSetTabs{
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+.scrollable{
+    height: 56vh;
+    overflow: auto;
+    scrollbar-width: none;
 }
 
 .preSetTab{
@@ -314,30 +324,34 @@ td.removeSubject-btn:hover{
 
 /*Settings Table*/
 .settings-table{
-    width: 50vw;
+    width: 40vw;
+    min-width: 500px;
     font-size: 1.1rem;
     border-collapse: collapse;
     border:2px solid #c7c7c7;
-    border-left: none;
 }
 
 table.settings-table thead th{
     color: #eeeeee;
     background-color: #0066cc;
+    
 }
 
-.settings-table tr{
-    border:1px solid #c0c0c0;
+table.settings-table tbody tr{
+    border-bottom: 1px solid #dddddd;
 }
 
 table.settings-table tbody tr:nth-child(even){
-    background-color: #f1f1f1;
+    background-color: #ededed;
 }
 
+
 .settings-table th, .settings-table td{
+    width: 33.33%;
     text-align: center;
-    padding: 10px 30px; 
+    padding: 10px; 
     color:#444444;
+
 }
 
 .settings-table input[type="checkbox"]{
@@ -346,29 +360,39 @@ table.settings-table tbody tr:nth-child(even){
 }
 
 input[type="number"]{
-    width:40%;
+    width: 50%;
+    padding:2px 5px;
+    font-size: 1.1rem;
+    text-align: center;
+    color:#444444;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #909090;
+}
+
+input[type="number"]:focus{
+    border-bottom: 1px solid #0066cc;
+    outline: none;
+}
+
+input[type="number"]:hover{
+    border-bottom: 1px solid #00A0D5;
+}
+
+input[type="number"]:disabled{
     padding:2px 5px;
     font-size: 1.1rem;
     color:#444444;
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #909090;
-}
 
-input[type="number"]:focus{
-    border-bottom: 2px solid #0066cc;
-    outline: none;
-}
-
-input[type="number"]:hover{
-    border-bottom: 2px solid #00A0D5;
 }
 
 .saveSettings-btn{
-    width:100%;
+    width:90%;
     margin:10px;
     padding:10px 30px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: 'Raleway', sans-serif;
     color:white;
     background-color: #0066cc;
