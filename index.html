@@ -100,16 +100,30 @@
             <!-- Settings -->
             <div id="settings" data-tab-content>
                 <div class="preSetSettings">
-                    <div id="defaultSettings" class="preSetTabsHead">Preset Settings <div class="preSetTabsHeadDesc">*
-                            You can make changes to Preset Settings *</div>
+                    <div id="defaultSettings" class="preSetTabsHead">Settings : <span id="settingsName">DEFAULT</span>
                     </div>
                     <ul class="preSetTabs">
                         <li id="default" class="preSetTab active">DEFAULT</li>
-                        <li id="taruc" class="preSetTab">TARUC</li>
-                        <li id="utar" class="preSetTab">UTAR</li>
-                        <li id="help" class="preSetTab">HELP UNI</li>
                         <li id="custom" class="preSetTab">CUSTOM</li>
                     </ul>
+                    <div class="preSetSettingsHead">
+                        ----Preset Settings----
+                    </div>
+                    <ul class="preSetTabs scrollable">
+                        <li id="help" class="preSetTab">HELP</li>
+                        <li id="inti" class="preSetTab">INTI</li>
+                        <li id="sunway" class="preSetTab">SUNWAY</li>
+                        <li id="stpm" class="preSetTab">STPM</li>
+                        <li id="taruc" class="preSetTab">TARUC</li>
+                        <li id="taylors" class="preSetTab">TAYLOR'S</li>
+                        <li id="ucsi" class="preSetTab">UCSI</li>
+                        <li id="upm" class="preSetTab">UPM</li>
+                        <li id="usm" class="preSetTab">USM</li>
+                        <li id="utar" class="preSetTab">UTAR</li>
+                        <li id="utm" class="preSetTab">UTM</li>
+                    </ul>
+
+
                 </div>
                 <form>
                     <table class="settings-table">
@@ -121,6 +135,11 @@
                             </tr>
                         </thead>
                         <tbody class="settings-table-body">
+                            <tr>
+                                <td><input type="checkbox" checked></td>
+                                <td>A+</td>
+                                <td><input type="number" value=4.30 step="0.25"></td>
+                            </tr>
                             <tr>
                                 <td><input type="checkbox" checked></td>
                                 <td>A</td>
