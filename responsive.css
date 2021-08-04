@@ -89,7 +89,7 @@ Date: May-June 2020
     }
     
     .gpa-target{
-        display: block;
+        display: none;
     }
     
     .gpaTargetInput-box{
@@ -153,12 +153,27 @@ Date: May-June 2020
 
     .preSetSettings{
         background-color: #f2f2f2;
-        border: 2px solid #d7d7d7;
+        /* border: 2px solid #d7d7d7; */
+        margin-right: 0px;
+        width: 100%;
+        border: none;
     }
 
     .preSetTabsHead{
         padding: 8px 16px;
         font-size: 1rem;
+    }
+
+    .preSetSettingsHead{
+        padding: 10px;
+        font-size: 0.7rem;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .scrollable{
+        height: 20vh;
+        overflow: auto;
     }
 
     .preSetTab{
@@ -169,9 +184,9 @@ Date: May-June 2020
     /*Settings Table*/
     .settings-table{
         width: 100%;
+        min-width: 100%;
         font-size: 0.8rem;
         border-collapse: collapse;
-        border:2px solid #c7c7c7;
         border: none;
     }
 
