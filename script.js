@@ -1,6 +1,6 @@
 /*
 Author: Kueh Jing Quan
-Date: May-June 2020
+Date Created: May 2020
 ----------------------------------
 */
 
@@ -189,7 +189,7 @@ function getColour(value) {
         color = "orange";
     else if (value <= 3.5)
         color = "#15a708";
-    else if (value <= 4)
+    else if (value > 3.5)
         color = "#00fb1d";
 
     return color;
@@ -221,8 +221,6 @@ function toggleRemoveButton() {
 
 function inflateSettingsTable(id) {
 
-    settingsName.innerHTML = document.querySelector('#' + id).innerHTML;
-
     let editable = true
     if (id === 'custom')
         editable = false
@@ -253,7 +251,9 @@ function save() {
         if (tab.classList.contains('active'))
             id = tab.id;
     })
+    settingsName.innerHTML = document.querySelector('#' + id).innerHTML;
     localStorage.setItem('settings', id);
+    
 
     //save customizedSettings to local storage
     if (id === 'custom') {
@@ -278,9 +278,28 @@ function loadSettings() {
             tab.classList.remove('active')
     })
     settingsArr['custom'] = custom;
+    settingsName.innerHTML = document.querySelector('#' + id).innerHTML;
     inflateSettingsTable(id);
 
 }
+
+function toggleSettingsList(btn){
+    const settingsList = document.querySelector('.settingsList')
+
+    if (settingsList.hasAttribute('style')) {
+        if (settingsList.style.display != "none")
+            settingsList.style.display = "none"
+        else
+            settingsList.style.display = "block";
+    }
+    else {
+        settingsList.style.display = "block"
+    }
+
+    btn.classList.toggle('fa-chevron-up');
+    btn.classList.toggle('fa-chevron-down');
+}
+
 
 //ACTIONS
 window.onload = () => {
