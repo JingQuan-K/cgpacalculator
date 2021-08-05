@@ -1,3 +1,9 @@
+<!-- 
+Author: Kueh Jing Quan
+Date Created: May 2020
+---------------------------------- 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,8 +62,8 @@
                             <thead>
                                 <tr>
                                     <th>COURSE</th>
-                                    <th>CREDIT</th>
-                                    <th>GRADE</th>
+                                    <th>CREDIT <span style="color:red">*</span></th>
+                                    <th>GRADE <span style="color:red">*</span></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -99,31 +105,33 @@
 
             <!-- Settings -->
             <div id="settings" data-tab-content>
-                <div class="preSetSettings">
-                    <div id="defaultSettings" class="preSetTabsHead">Settings : <span id="settingsName">DEFAULT</span>
+                <div class="configureSettings">
+                    <div class="currentSettings">
+                        <div><div class="currentSettingsText">Current Settings :</div><div id="settingsName">DEFAULT</div></div> <div id="toggleShowSettings"><i onclick="toggleSettingsList(this)"class="fas fa-chevron-down"></i></div>
                     </div>
-                    <ul class="preSetTabs">
-                        <li id="default" class="preSetTab active">DEFAULT</li>
-                        <li id="custom" class="preSetTab">CUSTOM</li>
-                    </ul>
-                    <div class="preSetSettingsHead">
-                        ----Preset Settings----
+                    <div class="settingsList">
+                        <ul class="preSetTabs">
+                            <li id="default" class="preSetTab active">DEFAULT</li>
+                            <li id="custom" class="preSetTab">CUSTOM</li>
+                        </ul>
+                        <div class="preSetSettingsHead">
+                            ----Preset Settings----
+                        </div>
+                        <ul class="preSetTabs scrollable">
+                            <li id="help" class="preSetTab">HELP</li>
+                            <li id="inti" class="preSetTab">INTI</li>
+                            <li id="sunway" class="preSetTab">SUNWAY</li>
+                            <li id="stpm" class="preSetTab">STPM</li>
+                            <li id="taruc" class="preSetTab">TARUC</li>
+                            <li id="taylors" class="preSetTab">TAYLOR'S</li>
+                            <li id="ucsi" class="preSetTab">UCSI</li>
+                            <li id="upm" class="preSetTab">UPM</li>
+                            <li id="usm" class="preSetTab">USM</li>
+                            <li id="utar" class="preSetTab">UTAR</li>
+                            <li id="utm" class="preSetTab">UTM</li>
+                        </ul>
                     </div>
-                    <ul class="preSetTabs scrollable">
-                        <li id="help" class="preSetTab">HELP</li>
-                        <li id="inti" class="preSetTab">INTI</li>
-                        <li id="sunway" class="preSetTab">SUNWAY</li>
-                        <li id="stpm" class="preSetTab">STPM</li>
-                        <li id="taruc" class="preSetTab">TARUC</li>
-                        <li id="taylors" class="preSetTab">TAYLOR'S</li>
-                        <li id="ucsi" class="preSetTab">UCSI</li>
-                        <li id="upm" class="preSetTab">UPM</li>
-                        <li id="usm" class="preSetTab">USM</li>
-                        <li id="utar" class="preSetTab">UTAR</li>
-                        <li id="utm" class="preSetTab">UTM</li>
-                    </ul>
-
-
+                    
                 </div>
                 <form>
                     <table class="settings-table">
