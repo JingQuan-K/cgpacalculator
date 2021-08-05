@@ -1,6 +1,6 @@
 /*
 Author: Kueh Jing Quan
-Date: May-June 2020
+Date Created: May 2020
 ----------------------------------
 */
 
@@ -270,25 +270,37 @@ td.removeSubject-btn:hover{
 }
 
 /*-------------------------  SETTINGS  -------------------------- */
-/*Preset Settings */
 #settings{
     padding:20px;
 }
 
-.preSetSettings{
+.configureSettings{
     background-color: #f2f2f2;
     border: 2px solid #d7d7d7;
     margin-right: 15px;
     width: 270px;
 }
 
-.preSetTabsHead{
+.currentSettings{
     margin-bottom: 2px;
     padding: 16px;
-    font-size: 1.4rem;
     line-height: 1.5;
     background-color: #002850;
     color:#eeeeee;
+}
+
+.currentSettingsText{
+    font-size: 0.9rem;
+    color: #dddddd;
+}
+
+#settingsName{
+    font-size: 1.4rem;
+}
+
+
+#toggleShowSettings{
+    display: none;
 }
 
 .preSetSettingsHead{
