@@ -1,6 +1,6 @@
 /*
 Author: Kueh Jing Quan
-Date: May-June 2020
+Date Created: May 2020
 ----------------------------------
 */
 
@@ -11,7 +11,7 @@ Date: May-June 2020
     }
 
     .tab-content{
-        padding:0px 10px;
+        padding:0px 10px 10px 10px;
     }
 
     .tab{
@@ -151,7 +151,7 @@ Date: May-June 2020
         padding:10px 0px;
     }
 
-    .preSetSettings{
+    .configureSettings{
         background-color: #f2f2f2;
         /* border: 2px solid #d7d7d7; */
         margin-right: 0px;
@@ -159,9 +159,29 @@ Date: May-June 2020
         border: none;
     }
 
-    .preSetTabsHead{
+    .settingsList{
+        display: none;
+    }
+
+    .currentSettings{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 8px 16px;
-        font-size: 1rem;
+    }
+
+    .currentSettingsText{
+        font-size: 0.8rem;
+        color: #dddddd;
+    }
+
+    #settingsName{
+        font-size: 1.1rem;
+    }
+
+    #toggleShowSettings{
+        display: block;
+        font-size: 1.5rem;
     }
 
     .preSetSettingsHead{
@@ -172,7 +192,7 @@ Date: May-June 2020
     }
 
     .scrollable{
-        height: 20vh;
+        height: 30vh;
         overflow: auto;
     }
 
@@ -188,6 +208,7 @@ Date: May-June 2020
         font-size: 0.8rem;
         border-collapse: collapse;
         border: none;
+        margin-top: 10px;
     }
 
     .settings-table th, .settings-table td{
