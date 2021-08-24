@@ -8,7 +8,7 @@ Date Created: May 2020
 body{
     margin:0;
     font-family: 'Raleway', sans-serif;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 /*--------------------------  NAV BAR  -------------------------- */
@@ -69,21 +69,22 @@ body{
     padding: 15px 30px;
     text-align: left;
     font-size: 1.1rem;
-    color: #eeeeee;
-    background-color: #0e4468;
+    color: #000000;
+    background-color: #eceff1;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .cgpaInput input[type="number"]{
     padding:2px 5px;
     font-size: 1rem;
-    color: #eeeeee;
+    color: #303030;
     border: none;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #303030;
 }
 
 .cgpaInput input[type="number"]::placeholder{
-    color:#dddddd;
+    color:#505050;
     opacity: 0.2;
 }
 
@@ -106,7 +107,7 @@ body{
     text-align: left;
     font-size: 1.2rem;
     color: #0b3c5d;
-    background-color: #dddddd;
+    background-color: #e1e2e1;
     border-radius: 5px;
 }
 
@@ -118,6 +119,7 @@ body{
     font-family: 'Raleway', sans-serif;
     background-color: #eeeeee;
     border-radius: 5px;
+    
 }
 
 input[type="text"]{
@@ -172,10 +174,12 @@ td.removeSubject-btn:hover{
     padding: 10px;
     font-size: 1.2rem;
     color: #0066cc;
-    background-color: #e5e5e5;
+    background-color: #e1e2e1;
     border: none;
     outline: none;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
 }
 
 .addSubject-btn:hover{
@@ -188,6 +192,7 @@ td.removeSubject-btn:hover{
 
 .gpaTargetInput-box{
     width:70%;
+    
 }
 
 .gpaTargetInput-box .gpaTargetInput {
@@ -197,9 +202,9 @@ td.removeSubject-btn:hover{
     text-align: left;
     font-size: 1.1rem;
     color: #0066cc;
-    background-color: #ebf4fa;
-    border: 1px solid #0066cc;
+    background-color: #e2f1f8;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .gpaTargetInput input[type="number"]{
@@ -231,9 +236,9 @@ td.removeSubject-btn:hover{
     text-align: center;
     font-size: 1rem;
     color: #0066cc;
-    background-color: #ebf4fa;
-    border: 1px solid #0066cc;
+    background-color: #e2f1f8;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .gpaTargetValue{
@@ -247,9 +252,10 @@ td.removeSubject-btn:hover{
     align-items: center;
     min-width:16vw;
     margin:5px;
-    background-color: #f0f0f0;
-    border: 2px solid grey;
-    border-radius: 5px;
+    background-color: #eceff1;
+    /* border: 2px solid grey; */
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .gpa-row{
