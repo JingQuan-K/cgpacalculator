@@ -1,7 +1,8 @@
-# cgpacalculator
-Vanilla Javascript Project: GPA/CGPA CALCULATOR<br>
-FEATURES:
-- Live Calculation<br>
-- Grade Scale/Point Settings<br>
-- GPA Target Calculator<br>
-- Responive CSS<br>
+# GPA/CGPA Calculator
+A vanilla Javascript Project to calculate GPA and CGPA.
+
+## Features
+- Customizable grade scale settings
+- Available preset grade scale settings of some popular Malaysian Universities
+- Settings saved in local storage
+- GPA/CGPA target calculator
